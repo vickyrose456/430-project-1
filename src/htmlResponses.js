@@ -20,7 +20,6 @@ const getCSS = (request, response) => {
   serveFile(response, css, 'text/css');
 };
 
-
 module.exports = {
   getIndex,
   getCSS,
