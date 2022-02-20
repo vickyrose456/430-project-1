@@ -56,9 +56,9 @@
             const nameAction = nameForm.getAttribute('action');
             const nameMethod = nameForm.getAttribute('method');
 
-            //name and age of user we want to add
+            //name and position of the baseball player we want to add
             const nameField = nameForm.querySelector('#nameField');
-            const ageField = nameForm.querySelector('#ageField');
+            const positionField = nameForm.querySelector('#positionField');
 
             //Build a data string in the FORM-URLENCODED format.
             const formData = `name=${nameField.value}&age=${ageField.value}`;
@@ -81,17 +81,16 @@
 
             //Grab the url and method from the html form below
             const url = userForm.querySelector('#urlField').value;
-            const method = userForm.querySelector('#methodSelect').value;
 
             //Await our fetch response.
             let response = await fetch(url, {
-                method,
+                method: 'GET',
                 headers: {
                     'Accept': 'application/json'
                 },
             });
 
-            handleResponse(response, method === 'get');
+            handleResponse(response, true);
         };
 
 
@@ -127,23 +126,22 @@
 
 <body>
     <section id="top">
-        <h3>POST Status Code Tests</h3>
+        <h3>Baseball player starter lineup Application</h3>
         <form id="nameForm" action="/addUser" method="post">
             <label for="name">Name: </label>
             <input id="nameField" type="text" name="name" />
-            <label for="age">Age: </label>
-            <input id="ageField" type="number" name="age" min="0" max="100" step="1" />
-            <input type="submit" value="Add User" />
+            <label for="position">Position: </label>
+            <input id="positionField" type="number" name="position" min="1" max="9" step="1" />
+            <input type="submit" value="Add Player" />
         </form>
         <form id="userForm" action="/getUsers" method="get">
             <select id='urlField'>
-                <option value='/getUsers'>/getUsers</option>
-                <option value='/notReal'>/notReal</option>
+                <option value='/getUsers'>Get Lineup</option>
             </select>
-            <select id="methodSelect">
+            <!--<select id="methodSelect">
                 <option value="get">GET</option>
                 <option value="head">HEAD</option>
-            </select>
+            </select>-->
             <input type="submit" value="Get User" />
         </form>
     </section>
