@@ -9,6 +9,8 @@
 
     <script>
 
+        const players = [];
+
         const handleResponse = async (response, pResponse) => {
             const content = document.querySelector('#content');
 
@@ -38,18 +40,27 @@
                 const obj = await response.json();
 
                 //console.log(obj.users);
-                console.log(obj.playerPos);
 
+
+                //show names for each position 
+                for (let i = 1; i <= 9; i++) {
+
+
+
+
+
+
+                }
                 const jsonString = JSON.stringify(obj.playerPos);
+                const splitJSON = jsonString.split('"');
+
+                //players[1] = jsonString;
+                console.log(splitJSON);
 
                 content.innerHTML += `<p>${jsonString}</p>`;
 
-                // If we have a message, display it.
-                // if (obj.message) {
-                // content.innerHTML += `<p>${obj.message}</p>`;
-                // }
             } else {
-                // content.innerHTML += '<p>Meta Data Received</p>';
+
             }
         };
 
@@ -210,7 +221,7 @@ header{
 <body>
     <client-header data-title="Baseball Lineup Generator"></client-header>
 
-    <section id="top">
+    <section id="myForms">
 
         <form id="nameForm" action="/addUser" method="post">
             <label for="name">Name: </label>
@@ -219,12 +230,16 @@ header{
             <input id="positionField" type="number" name="position" min="1" max="9" step="1" />
             <input type="submit" value="Add Player" />
         </form>
+
+
         <form id="userForm" action="/getUsers" method="get">
             <select id='urlField'>
-                <option value='/getUsers'>Get Lineup</option>
+                <option value='/getUsers'>My Lineup</option>
             </select>
-            <input type="submit" value="Get User" />
+            <input type="submit" value="Get Lineup" />
         </form>
+
+
     </section>
     <section id="content">
     </section>
