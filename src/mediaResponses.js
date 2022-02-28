@@ -19,7 +19,8 @@ const loadMedia = (request, response, file) => {
     });
     response.end(img);
 
-    
+    console.dir(stats);
+
     return (img);
   });// end fs.stat
 };// end loadMedia
