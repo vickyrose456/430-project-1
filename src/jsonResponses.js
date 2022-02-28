@@ -27,7 +27,7 @@ const addUser = (request, response, body) => {
     message: 'Name and age are both required.',
   };
 
-  if (!body.name || !body.age) {
+  if (!body.name || !body.pos) {
     responseJSON.id = 'missingParams';
     return respondJSON(request, response, 400, responseJSON);
   }
@@ -36,15 +36,15 @@ const addUser = (request, response, body) => {
   let responseCode = 204;
 
   // If the user doesn't exist yet
-  if (!users[body.name]) {
+  if (!users[body.pos]) {
     // Set the status code to 201 (created) and create an empty user
     responseCode = 201;
-    users[body.name] = {};
+    users[body.pos] = {};
   }
 
   // add or update fields for this user name
-  users[body.name].name = body.name;
-  users[body.name].age = body.age;
+  users[body.pos].name = body.name;
+  users[body.pos].pos = body.pos;
 
   // if response is created, then set our created message
   // and sent response with a message

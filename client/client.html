@@ -34,7 +34,10 @@
                 //parse the JSON
                 let obj = await response.json();
 
-                let jsonString = JSON.stringify(obj);
+                console.log(obj.users);
+
+                let jsonString = JSON.stringify(obj.users);
+
                 content.innerHTML += `<p>${jsonString}</p>`;
 
                 //If we have a message, display it.
@@ -61,7 +64,7 @@
             const positionField = nameForm.querySelector('#positionField');
 
             //Build a data string in the FORM-URLENCODED format.
-            const formData = `name=${nameField.value}&age=${ageField.value}`;
+            const formData = `name=${nameField.value}&pos=${positionField.value}`;
 
             //Make a fetch request
             let response = await fetch(nameAction, {
