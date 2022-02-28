@@ -7,9 +7,6 @@
     <title>Olivieri Project 1</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 
-    <script src="../src/client-header.js" type="text"></script>
-
-
     <script>
 
         const handleResponse = async (response, pResponse) => {
@@ -22,6 +19,9 @@
                     break;
                 case 201:
                     content.innerHTML = '<b>Created</b>';
+                    break;
+                case 204:
+                    content.innerHTML = '<b>Updated!</b>';
                     break;
                 case 400:
                     content.innerHTML = '<b>Bad Request ):</b>';
@@ -37,9 +37,10 @@
                 // parse the JSON
                 const obj = await response.json();
 
-                console.log(obj.users);
+                //console.log(obj.users);
+                console.log(obj.playerPos);
 
-                const jsonString = JSON.stringify(obj.users);
+                const jsonString = JSON.stringify(obj.playerPos);
 
                 content.innerHTML += `<p>${jsonString}</p>`;
 
@@ -125,8 +126,6 @@
 
 
 
-
-
         //Header styling 
 
         const template = document.createElement("template");
@@ -201,6 +200,8 @@ header{
         }//ends SWHeader element
 
         customElements.define('client-header', ClientHeader);
+
+        //end of header code 
 
 
     </script>

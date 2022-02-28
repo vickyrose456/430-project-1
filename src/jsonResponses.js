@@ -1,4 +1,5 @@
 const users = {};
+const playerPos = {};
 
 const respondJSON = (request, response, status, object) => {
   response.writeHead(status, { 'Content-Type': 'application/json' });
@@ -15,6 +16,7 @@ const respondJSONMeta = (request, response, status) => {
 const getUsers = (request, response) => {
   const responseJSON = {
     users,
+    playerPos,
   };
 
   respondJSON(request, response, 200, responseJSON);
@@ -45,6 +47,8 @@ const addUser = (request, response, body) => {
   // add or update fields for this user name
   users[body.pos].name = body.name;
   users[body.pos].pos = body.pos;
+
+  playerPos[body.pos] = body.name;
 
   // if response is created, then set our created message
   // and sent response with a message
