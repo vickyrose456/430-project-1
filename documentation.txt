@@ -29,7 +29,7 @@ If time allows, I want to inorporate a baseball player API to allow the user to 
 ● If you used any borrowed code or code fragments, where did you get them from?
 What do the code fragments do? Where are they in your code?
 
-I used code from the API HW that was submitted for this class to get user information and storing it into an API. For the header template, I referenced a past project from IGME 235. For the image of the baseball field used, I got it from https://pixabay.com/vectors/baseball-field-sports-stadium-park-3778774/ so it is open source. 
+I used code from the API HW that was submitted for this class to get user information and storing it into an API. For the header template, I referenced a past project from IGME 235. For the image of the baseball field used, I got it from https://pixabay.com/vectors/baseball-field-sports-stadium-park-3778774/ so it is open source. To help with showing a png file, I referenced the media assignment along with the following link: https://stackoverflow.com/questions/5823722/how-to-serve-an-image-using-nodejs .  
 
 Endpoint Documentation
 
