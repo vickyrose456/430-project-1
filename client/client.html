@@ -7,6 +7,7 @@
     <title>Olivieri Project 1</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
 
+
     <script>
 
         const players = [];
@@ -136,7 +137,6 @@
 
 
 
-
         //Header styling 
 
         const template = document.createElement("template");
@@ -203,7 +203,7 @@ header{
 
             render() {
                 //grab attribute vals and assign default val if needed
-                const title = this.dataset.title ? this.dataset.title : "Star Wars";
+                const title = this.dataset.title ? this.dataset.title : "Baseball API";
                 this.h1.innerHTML = `${title}`;
                 this.span.innerHTML = `Set your starting team!`;
             }
@@ -242,6 +242,7 @@ header{
 
     </section>
     <section id="content">
+        <img src="../images/baseball_field.png" alt="Baseball Field" style="width:500px">
     </section>
 </body>
 

@@ -6,18 +6,30 @@ individual paragraphs so that they are easier to parse.
 
 ● What is the intended purpose of your application?
 
+This website will allow the user to enter a baseball player's name into the field along with the position that they play. Once the user submits their player, the player will show up in that specific position on an image of a baseball field. Ultimately, the user should be able to see a full starting lineup on the screen when they have submitted all positions for the players. The API will store your set of players as your team. 
+
+
 ● What data will be stored and delivered by the API?
+
 The data stored includes the baseball player name and the position that they will play. 
 
 ● What work has been completed for this prototype?
 
 ● What work is left, and how do you plan to complete it?
 
+Still need to complete the folowing:
+1. Search for players to get their information.
+2. Display your team on the page
+
+
 ● Do you have a plan for going above and beyond? If so, what is it?
+
+If time allows, I want to inorporate a baseball player API to allow the user to choose from an already existing player, rather than typing in the name. 
 
 ● If you used any borrowed code or code fragments, where did you get them from?
 What do the code fragments do? Where are they in your code?
 
+I used code from the API HW that was submitted for this class to get user information and storing it into an API. For the header template, I referenced a past project from IGME 235. For the image of the baseball field used, I got it from https://pixabay.com/vectors/baseball-field-sports-stadium-park-3778774/ so it is open source. 
 
 Endpoint Documentation
 
