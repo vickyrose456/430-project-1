@@ -15,6 +15,7 @@
         const handleResponse = async (response, pResponse) => {
             const content = document.querySelector('#content');
 
+
             // Switch based on the response status code
             switch (response.status) {
                 case 200:
@@ -36,29 +37,61 @@
                     break;
             }
 
+            content.innerHTML += `<img src="/baseballField" alt="Baseball field" style="width:400px; padding: 10px;">`;
+
             if (pResponse) {
                 // parse the JSON
                 const obj = await response.json();
 
-                //console.log(obj.users);
+                console.log(obj.playerPos);
 
 
-                //show names for each position 
+                //const jsonString = JSON.stringify(obj.playerPos);
+
+
+
+                //show names for each position respectively
                 for (let i = 1; i <= 9; i++) {
 
+                    if (obj.playerPos[i]) {
+                        content.innerHTML += `<section id = ${i}>
+                        ${obj.playerPos[i]}</section>`;
+                    } else {
+                        content.innerHTML += `<section id = ${i}>
+                        N/A </section>`;
+                    }
+
+                }//end for loop
+
+                //const splitJSON = jsonString.split('""');
 
 
+                //if it exist, put the name in the correct position
+                /*if (obj.playerPos[1]) {
+                    pos1.innerHTML = `<p>${obj.playerPos[1]}</p>`
+                } if (obj.playerPos[2]) {
+                    pos2.innerHTML = `<p>${obj.playerPos[2]}</p>`
+                } if (obj.playerPos[3]) {
+                    pos3.innerHTML = `<p>${obj.playerPos[3]}</p>`
+                } if (obj.playerPos[4]) {
+                    pos4.innerHTML = `<p>${obj.playerPos[4]}</p>`
+                } if (obj.playerPos[5]) {
+                    pos5.innerHTML = `<p>${obj.playerPos[5]}</p>`
+                } if (obj.playerPos[6]) {
+                    pos6.innerHTML = `<p>${obj.playerPos[6]}</p>`
+                } if (obj.playerPos[7]) {
+                    pos7.innerHTML = `<p>${obj.playerPos[7]}</p>`
+                } if (obj.playerPos[8]) {
+                    pos8.innerHTML = `<p>${obj.playerPos[8]}</p>`
+                } if (obj.playerPos[9]) {
+                    pos9.innerHTML = `<p>${obj.playerPos[9]}</p>`
+                }*/
 
-
-
-                }
-                const jsonString = JSON.stringify(obj.playerPos);
-                const splitJSON = jsonString.split('"');
 
                 //players[1] = jsonString;
-                console.log(splitJSON);
+                //console.log(splitJSON);
 
-                content.innerHTML += `<p>${jsonString}</p>`;
+                //content.innerHTML += `<p>${jsonString}</p>`;
 
             } else {
 
@@ -93,8 +126,8 @@
         };// end send post
 
         const requestUpdate = async (userForm) => {
-            // Grab the url and method from the html form below
-            const url = userForm.querySelector('#urlField').value;
+            //The Url will automatically be getting the users 
+            const url = '/getUsers';
 
             // Await our fetch response.
             const response = await fetch(url, {
@@ -235,18 +268,26 @@ header{
 
 
         <form id="userForm" action="/getUsers" method="get">
-            <select id='urlField'>
+            <!--
+                <select id='urlField'>
                 <option value='/getUsers'>My Lineup</option>
             </select>
+            -->
             <input type="submit" value="Get Lineup" />
         </form>
 
 
     </section>
-    <img src="/baseballField" alt="Baseball field" style="width:400px">
+
     <section id="content">
+        <img src="/baseballField" alt="Baseball field" style="width:400px; padding: 10px;">
 
     </section>
+
+
+
+
+
 </body>
 
 </html>

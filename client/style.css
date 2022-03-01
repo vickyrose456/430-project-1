@@ -6,6 +6,19 @@ body {
   padding: 0;
 }
 
+input[type="submit"] {
+  background: #71a970;
+  border-radius: 5px;
+  padding: 5px 15px;
+  border: 2px solid #71a970;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #f8d5b8;
+  border: 2px solid #f8d5b8;
+}
+
 #myForms {
   text-align: center;
   margin: 0 auto;
@@ -17,6 +30,6 @@ body {
 
 #content {
   margin-top: 100px;
-  font-size: 2em;
+  font-size: 1em;
   text-align: center;
 }
