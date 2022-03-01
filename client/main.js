@@ -1,7 +1,5 @@
 import "./client-header.js";
 
-const players = [];
-
         const handleResponse = async (response, pResponse) => {
             const content = document.querySelector('#content');
 
@@ -9,25 +7,25 @@ const players = [];
             // Switch based on the response status code
             switch (response.status) {
                 case 200:
-                    content.innerHTML = '<b>Success!</b>';
+                    content.innerHTML = '<p id = "status"><b>Success!</b></p>';
                     break;
                 case 201:
-                    content.innerHTML = '<b>Created</b>';
+                    content.innerHTML = '<p id = "status"><b>Created</b></p>';
                     break;
                 case 204:
-                    content.innerHTML = '<b>Updated!</b>';
+                    content.innerHTML = '<p id = "status"><b>Updated!</b></p>';
                     break;
                 case 400:
-                    content.innerHTML = '<b>Bad Request ):</b>';
+                    content.innerHTML = '<p id = "status"><b>Bad Request ):</b></p>';
                     break;
                 case 404:
-                    content.innerHTML = '<b>Resource Not Found</b>';
+                    content.innerHTML = '<p id = "status"><b>Resource Not Found</b></p>';
                 default:
-                    content.innerHTML = '<b>Something went wrong ):</b>';
+                    content.innerHTML = '<p id = "status"><b>Something went wrong ):</b></p>';
                     break;
             }
 
-            content.innerHTML += `<img src="/baseballField" alt="Baseball field" style="width:400px; padding: 10px;">`;
+            content.innerHTML += `<img src="/baseballField" alt="Baseball field" style="width:500px; padding: 5px;">`;
 
             if (pResponse) {
                 // parse the JSON
@@ -37,16 +35,27 @@ const players = [];
 
                 //const jsonString = JSON.stringify(obj.playerPos);
 
+                
+
                 //show names for each position respectively
                 for (let i = 1; i <= 9; i++) {
 
+                    const section = document.createElement("section");
+                    section.id = `pos${i}`;
+                    
                     if (obj.playerPos[i]) {
-                        content.innerHTML += `<section id = ${i}>
-                        ${obj.playerPos[i]}</section>`;
+                        //section.innerHTML += `<section id = ${i}>
+                        //${obj.playerPos[i]}</section>`;
+                        
+                        section.innerText = `${obj.playerPos[i]}`;
+
                     } else {
-                        content.innerHTML += `<section id = ${i}>
-                        N/A </section>`;
+                        //section.innerHTML += `<section id = ${i}>
+                        //N/A </section>`;
+                        section.innerText = 'N/A';
                     }
+                    
+                    content.appendChild(section);
 
                 }//end for loop
 
@@ -129,85 +138,4 @@ const players = [];
         };
 
         window.onload = init;
-
-
-
-
-
-        //Header styling 
-
-        /* const template = document.createElement("template");
-         template.innerHTML = `
-     <style>
- header{
-     color: white;
-     background-color: green;
-     padding: 1em;
-     user-select: none;
-     margin-bottom: .5rem;
-   }
-   header h1{
-     font-family: sans-serif;
-     letter-spacing: 1px;
-   }
-   
-   header span{
-     font-variant: small-caps;
-     font-weight: bolder;
-     font-family: sans-serif;
-     font-style: italic;
-   }
-     </style>
- <header>
-     <h1>Starting Basball Lineup</h1>
-     <span>Set your starting team!</span>
- </header>
- `;
- 
-         class ClientHeader extends HTMLElement {
-             constructor() {
-                 super();
- 
-                 //attach shadow DOM
-                 this.attachShadow({ mode: "open" });
- 
-                 //clone template
-                 this.shadowRoot.appendChild(template.content.cloneNode(true));
- 
-                 this.h1 = this.shadowRoot.querySelector("h1");
-                 this.span = this.shadowRoot.querySelector("span");
- 
-             }//end constructor
- 
- 
-             connectedCallback() {
-                 this.render();
-             }
- 
-             disconnectedCallback() {
-                 //cleanup
-                 this.onclick = null;
-             }
- 
-             attributeChangedCallback(attributeName, oldVal, newVal) {
-                 ///console.log(attributeName, oldVal, newVal);
-                 this.render();
-             }
- 
-             static get observedAttributes() {
-                 return ["data-title"];
-             }
- 
-             render() {
-                 //grab attribute vals and assign default val if needed
-                 const title = this.dataset.title ? this.dataset.title : "Baseball API";
-                 this.h1.innerHTML = `${title}`;
-                 this.span.innerHTML = `Set your starting team!`;
-             }
- 
-         }//ends SWHeader element
- 
-         customElements.define('client-header', ClientHeader);
- 
-         //end of header code */
 
