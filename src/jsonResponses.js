@@ -15,7 +15,7 @@ const respondJSONMeta = (request, response, status) => {
 // return user object as JSON
 const getUsers = (request, response) => {
   const responseJSON = {
-    users,
+    //users,
     playerPos,
   };
 
@@ -38,17 +38,21 @@ const addUser = (request, response, body) => {
   let responseCode = 204;
 
   // If the user doesn't exist yet
-  if (!users[body.pos]) {
+  if (!playerPos[body.pos]) {
     // Set the status code to 201 (created) and create an empty user
     responseCode = 201;
-    users[body.pos] = {};
+    playerPos[body.pos] = {};
   }
 
   // add or update fields for this user name
-  users[body.pos].name = body.name;
-  users[body.pos].pos = body.pos;
+  //users[body.pos].name = body.name;
+  //users[body.pos].pos = body.pos;
 
-  playerPos[body.pos] = body.name;
+  //store the player information 
+  //playerPos[body.pos] = body.name;
+  playerPos[body.pos].name = body.name;
+  playerPos[body.pos].position = body.pos;
+  playerPos[body.pos].team = body.team;
 
   // if response is created, then set our created message
   // and sent response with a message

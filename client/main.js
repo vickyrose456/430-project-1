@@ -52,7 +52,7 @@ import "./client-header.js";
                         //section.innerHTML += `<section id = ${i}>
                         //${obj.playerPos[i]}</section>`;
                         
-                        section.innerText = `${obj.playerPos[i]}`;
+                        section.innerText = `${obj.playerPos[i].name}`;
 
                     } else {
                         //section.innerHTML += `<section id = ${i}>
@@ -86,9 +86,10 @@ import "./client-header.js";
             // name and position of the baseball player we want to add
             const nameField = nameForm.querySelector('#nameField');
             const positionField = nameForm.querySelector('#positionField');
+            const teamField = nameForm.querySelector('#teamField');
 
             // Build a data string in the FORM-URLENCODED format.
-            const formData = `name=${nameField.value}&pos=${positionField.value}`;
+            const formData = `name=${nameField.value}&pos=${positionField.value}&team=${teamField.value}`;
 
             // Make a fetch request
             const response = await fetch(nameAction, {
