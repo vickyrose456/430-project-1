@@ -25,7 +25,12 @@ import "./client-header.js";
                     break;
             }
 
-            content.innerHTML += `<img src="/baseballField" alt="Baseball field" style="width:500px; padding: 5px;">`;
+            const fieldImg = document.createElement("img");
+            fieldImg.src = `/baseballField`;
+            fieldImg.alt = `Baseball field`;
+            content.appendChild(fieldImg);
+
+            //content.innerHTML += `<img src="/baseballField" alt="Baseball field" style="width:500px; padding: 5px;">`;
 
             if (pResponse) {
                 // parse the JSON
@@ -52,7 +57,7 @@ import "./client-header.js";
                     } else {
                         //section.innerHTML += `<section id = ${i}>
                         //N/A </section>`;
-                        section.innerText = 'N/A';
+                        section.innerText = `${i}`;
                     }
                     
                     content.appendChild(section);

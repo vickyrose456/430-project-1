@@ -20,14 +20,16 @@ input[type="submit"]:hover {
 }
 
 img {
-  width: 500px;
-  padding: 5px;
+  width: 600px;
+  position: absolute;
+  padding: 10px;
+  left: 100px;
 }
 
 #pos1 {
   position: absolute;
-  top: 75%;
-  right: 25%;
+  top: 620px;
+  left: 355px;
   width: 100px;
   height: 50px;
   background-color: white;
@@ -37,8 +39,8 @@ img {
 
 #pos2 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 780px;
+  left: 355px;
   width: 100px;
   height: 50px;
   background-color: white;
@@ -48,8 +50,8 @@ img {
 
 #pos3 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 660px;
+  left: 500px;
   width: 100px;
   height: 50px;
   background-color: white;
@@ -59,8 +61,8 @@ img {
 
 #pos4 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 550px;
+  left: 450px;
   width: 100px;
   height: 50px;
   background-color: white;
@@ -70,8 +72,8 @@ img {
 
 #pos5 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 660px;
+  left: 230px;
   width: 100px;
   height: 50px;
   background-color: white;
@@ -81,8 +83,8 @@ img {
 
 #pos6 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 550px;
+  left: 245px;
   width: 100px;
   height: 50px;
   background-color: white;
@@ -92,8 +94,8 @@ img {
 
 #pos7 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 450px;
+  left: 150px;
   width: 100px;
   height: 50px;
   background-color: white;
@@ -103,8 +105,8 @@ img {
 
 #pos8 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 400px;
+  left: 355px;
   width: 100px;
   height: 50px;
   background-color: white;
@@ -114,8 +116,8 @@ img {
 
 #pos9 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 450px;
+  left: 550px;
   width: 100px;
   height: 50px;
   background-color: white;

@@ -13,36 +13,38 @@
 
 <body>
 
+    <div id="wrapper">
+        <client-header data-title="Baseball Lineup Generator"></client-header>
 
-    <client-header data-title="Baseball Lineup Generator"></client-header>
+        <section id="myForms">
 
-    <section id="myForms">
-
-        <form id="nameForm" action="/addUser" method="post">
-            <label for="name">Name: </label>
-            <input id="nameField" type="text" name="name" />
-            <label for="position">Position: </label>
-            <input id="positionField" type="number" name="position" min="1" max="9" step="1" />
-            <input type="submit" value="Add Player" />
-        </form>
+            <form id="nameForm" action="/addUser" method="post">
+                <label for="name">Name: </label>
+                <input id="nameField" type="text" name="name" />
+                <label for="position">Position: </label>
+                <input id="positionField" type="number" name="position" min="1" max="9" step="1" />
+                <input type="submit" value="Add Player" />
+            </form>
 
 
-        <form id="userForm" action="/getUsers" method="get">
-            <!--
+            <form id="userForm" action="/getUsers" method="get">
+                <!--
                 <select id='urlField'>
                 <option value='/getUsers'>My Lineup</option>
             </select>
             -->
-            <input type="submit" value="Get Lineup" />
-        </form>
+                <input type="submit" value="Get Lineup" />
+            </form>
+
+        </section>
+
+        <section id="content">
+            <img src="/baseballField" alt="Baseball field">
+
+        </section>
+    </div>
 
 
-    </section>
-
-    <section id="content">
-        <img src="/baseballField" alt="Baseball field" style="width:500px; padding: 5px;">
-
-    </section>
 
 
 
