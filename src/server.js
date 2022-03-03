@@ -36,6 +36,9 @@ const handlePost = (request, response, parsedUrl) => {
   if (parsedUrl.pathname === '/addUser') {
     parseBody(request, response, jsonHandler.addUser);
   }
+  if (parsedUrl.pathname === '/searchUser') {
+    parseBody(request, response, jsonHandler.searchUsers);
+  }
 };// end handlePost
 
 const urlStruct = {
@@ -44,8 +47,10 @@ const urlStruct = {
     '/': htmlHandler.getIndex,
     '/style.css': htmlHandler.getCSS,
     '/getUsers': jsonHandler.getUsers,
+    '/getSearchUsers': jsonHandler.getSearchUsers,
     '/notReal': jsonHandler.notFound,
     '/addUser': jsonHandler.addUser,
+    '/searchUsers': jsonHandler.searchUsers,
     '/main.js': htmlHandler.getClientMain,
     '/client-header.js': htmlHandler.getClientHeader,
     '/baseballField': htmlHandler.getImg,
@@ -55,8 +60,10 @@ const urlStruct = {
     '/': htmlHandler.getIndex,
     '/style.css': htmlHandler.getCSS,
     '/getUsers': jsonHandler.getUsers,
+    '/getSearchUsers': jsonHandler.getSearchUsers,
     '/notReal': jsonHandler.notFoundMeta,
     '/addUser': jsonHandler.addUser,
+    '/searchUsers': jsonHandler.searchUsers,
     '/main.js': htmlHandler.getClientMain,
     '/client-header.js': htmlHandler.getClientHeader,
     '/baseballField': htmlHandler.getImg,

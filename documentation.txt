@@ -14,11 +14,13 @@ The data stored includes the baseball player name and the position that they wil
 
 ● What work has been completed for this prototype?
 
+1. Allowing the user to add a player to their starting lineup. 2. Displays the players on the image in their respective position. 
+
 ● What work is left, and how do you plan to complete it?
 
 Still need to complete the folowing:
 1. Search for players to get what position they play.
-2. Display your team on the page according to the image
+2. Assign players to a team and allow the user to access all players on the same team.
 
 
 ● Do you have a plan for going above and beyond? If so, what is it?
@@ -28,7 +30,7 @@ If time allows, I want to inorporate a baseball player API to allow the user to 
 ● If you used any borrowed code or code fragments, where did you get them from?
 What do the code fragments do? Where are they in your code?
 
-I used code from the API HW that was submitted for this class to get user information and storing it into an API. For the header template, I referenced a past project from IGME 235. For the image of the baseball field used, I got it from https://pixabay.com/vectors/baseball-field-sports-stadium-park-3778774/ so it is open source. To help with showing a png file, I referenced the media assignment along with the following link: https://stackoverflow.com/questions/5823722/how-to-serve-an-image-using-nodejs . Also used https://www.w3schools.com/Css/tryit.asp?filename=trycss_position_absolute to determine how to get the players in a specific spot using CSS. 
+I used code from the API HW that was submitted for this class to get user information and storing it into an API. For the header template, I referenced a past project from IGME 235. For the image of the baseball field used, I got it from https://pixabay.com/vectors/baseball-field-sports-stadium-park-3778774/ so it is open source. To help with showing a png file, I referenced the media assignment along with the following link: https://stackoverflow.com/questions/5823722/how-to-serve-an-image-using-nodejs . Also used https://www.w3schools.com/Css/tryit.asp?filename=trycss_position_absolute to determine how to get the players in a specific spot using CSS. For the font, I used the ttf file from https://fonts.google.com/specimen/Secular+One#license . 
 
 Endpoint Documentation
 

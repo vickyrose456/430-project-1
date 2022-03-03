@@ -1,5 +1,5 @@
-const users = {};
-const playerPos = {};
+const players = {};
+const searchPlayer = {};
 
 const respondJSON = (request, response, status, object) => {
   response.writeHead(status, { 'Content-Type': 'application/json' });
@@ -12,24 +12,66 @@ const respondJSONMeta = (request, response, status) => {
   response.end();
 };
 
-// return user object as JSON
+// returns the players object as JSON
 const getUsers = (request, response) => {
   const responseJSON = {
-    //users,
-    playerPos,
+    players,
   };
 
   respondJSON(request, response, 200, responseJSON);
+};// end get users\
+
+const getSearchUsers = (request, response) => {
+  const responseJSON = {
+    searchPlayer,
+  };
+
+  respondJSON(request, response, 200, responseJSON);
+};// end get search users
+
+const searchUsers = (request, response, search) => {
+  // default json message
+  const responseJSON = {
+    message: 'Name is required.',
+  };
+
+  // if nothing is entered into search input, print error msg
+  if (!search) {
+    responseJSON.id = 'missingParams';
+    return respondJSON(request, response, 400, responseJSON);
+  }
+
+  // default status code to 204 updated
+  const responseCode = 204;
+
+  // If the user doesn't exist yet
+  for (let i = 0; i < players.length; i++) {
+    if (!players[i].name !== search) {
+    // send error msg
+      responseJSON.id = 'playerNotFound';
+      return respondJSON(request, response, 404, responseJSON);
+    }
+  }
+
+  // store the player information into the search player obj to return back to user
+  // players[body.pos] = body.name;
+  searchPlayer.name = players[search].name;
+  searchPlayer.pos = players[search].pos;
+  searchPlayer.team = players[search].team;
+
+  getSearchUsers(request, response);
+
+  return respondJSONMeta(request, response, responseCode);
 };
 
 // function to add a user from a POST body
 const addUser = (request, response, body) => {
   // default json message
   const responseJSON = {
-    message: 'Name and age are both required.',
+    message: 'Name, team, and position are all required.',
   };
 
-  if (!body.name || !body.pos) {
+  if (!body.name || !body.pos || !body.team) {
     responseJSON.id = 'missingParams';
     return respondJSON(request, response, 400, responseJSON);
   }
@@ -38,21 +80,18 @@ const addUser = (request, response, body) => {
   let responseCode = 204;
 
   // If the user doesn't exist yet
-  if (!playerPos[body.pos]) {
+  if (!players[body.pos]) {
     // Set the status code to 201 (created) and create an empty user
     responseCode = 201;
-    playerPos[body.pos] = {};
+    players[body.pos] = {};
   }
 
-  // add or update fields for this user name
-  //users[body.pos].name = body.name;
-  //users[body.pos].pos = body.pos;
-
-  //store the player information 
-  //playerPos[body.pos] = body.name;
-  playerPos[body.pos].name = body.name;
-  playerPos[body.pos].position = body.pos;
-  playerPos[body.pos].team = body.team;
+  // store the player information
+  players[body.pos] = {
+    name: body.name,
+    pos: body.pos,
+    team: body.team,
+  };
 
   // if response is created, then set our created message
   // and sent response with a message
@@ -85,6 +124,8 @@ const notFoundMeta = (request, response) => {
 // public exports
 module.exports = {
   getUsers,
+  searchUsers,
+  getSearchUsers,
   addUser,
   notFound,
   notFoundMeta,

@@ -21,13 +21,23 @@
             <form id="nameForm" action="/addUser" method="post">
                 <label for="name">Name: </label>
                 <input id="nameField" type="text" name="name" />
+
                 <label for="team">Team: </label>
                 <input id="teamField" type="text" name="team" />
+
                 <label for="position">Position: </label>
                 <input id="positionField" type="number" name="position" min="1" max="9" step="1" />
+
                 <input type="submit" value="Add Player" />
             </form>
 
+
+            <form id="searchForm" action="/searchUsers" method="get">
+                <label for="searchName">Search by player name: </label>
+                <input id="searchNameField" type="text" name="searchName" />
+
+                <input type="submit" value="Search" />
+            </form>
 
             <form id="userForm" action="/getUsers" method="get">
                 <!--
@@ -45,12 +55,6 @@
 
         </section>
     </div>
-
-
-
-
-
-
 
 </body>
 

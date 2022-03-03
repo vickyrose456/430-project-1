@@ -9,7 +9,7 @@ header{
     margin-bottom: .5rem;
   }
   header h1{
-    font-family: sans-serif;
+    font-family: "Merriweather";
     letter-spacing: 1px;
   }
   
@@ -25,6 +25,8 @@ header{
     <span>Set your starting team!</span>
 </header>
 `;
+
+//class to display the header on the top of the page 
 class ClientHeader extends HTMLElement {
     constructor() {
         super();

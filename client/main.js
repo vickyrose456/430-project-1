@@ -1,5 +1,7 @@
 import "./client-header.js";
 
+//const startingLineup = {};
+
         const handleResponse = async (response, pResponse) => {
             const content = document.querySelector('#content');
 
@@ -25,18 +27,19 @@ import "./client-header.js";
                     break;
             }
 
+            //add the image of the field onto the screen
             const fieldImg = document.createElement("img");
             fieldImg.src = `/baseballField`;
             fieldImg.alt = `Baseball field`;
             content.appendChild(fieldImg);
 
-            //content.innerHTML += `<img src="/baseballField" alt="Baseball field" style="width:500px; padding: 5px;">`;
 
             if (pResponse) {
                 // parse the JSON
                 const obj = await response.json();
 
-                console.log(obj.playerPos);
+                console.log(obj.players);
+                console.log(obj);
 
                 //const jsonString = JSON.stringify(obj.playerPos);
 
@@ -48,11 +51,11 @@ import "./client-header.js";
                     const section = document.createElement("section");
                     section.id = `pos${i}`;
                     
-                    if (obj.playerPos[i]) {
+                    if (obj.players[i]) {
                         //section.innerHTML += `<section id = ${i}>
                         //${obj.playerPos[i]}</section>`;
                         
-                        section.innerText = `${obj.playerPos[i].name}`;
+                        section.innerText = `${obj.players[i].name}`;
 
                     } else {
                         //section.innerHTML += `<section id = ${i}>
@@ -119,10 +122,33 @@ import "./client-header.js";
             handleResponse(response, true);
         };
 
+        const requestSearchUpdate = async (searchForm) => {
+            //The Url will automatically be getting the users 
+            const url = '/searchUsers';
+
+            const searchField = searchForm.querySelector('#searchNameField');
+
+            const search = `search=${searchField.value}`;
+            
+            // Await our fetch response.
+            const response = await fetch(url, {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Accept: 'application/json',
+                },
+                search: search,
+            });
+
+            console.log("To response");
+            handleResponse(response, true);
+        };
+
         const init = () => {
             // Grab the form
             const nameForm = document.querySelector('#nameForm');
             const userForm = document.querySelector('#userForm');
+            const searchForm =document.querySelector('#searchForm');
 
             // Create an addUser fns
             const addUser = (e) => {
@@ -138,9 +164,17 @@ import "./client-header.js";
                 return false;
             };
 
+            //search user fns to show results 
+            const searchUsers = (e) => {
+                e.preventDefault();
+                requestSearchUpdate(searchForm);
+                return false;
+            };
+
             // Call addUser when the submit event fires on the name form.
             nameForm.addEventListener('submit', addUser);
             userForm.addEventListener('submit', getUsers);
+            searchForm.addEventListener('submit', searchUsers);
         };
 
         window.onload = init;
