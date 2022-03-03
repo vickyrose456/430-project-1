@@ -21,13 +21,34 @@ const getUsers = (request, response) => {
   respondJSON(request, response, 200, responseJSON);
 };// end get users\
 
-const getSearchUsers = (request, response) => {
+const getSearchUsers = (request, response, body) => {
+// default json message
   const responseJSON = {
-    searchPlayer,
+    message: 'Name is required.',
   };
 
-  respondJSON(request, response, 200, responseJSON);
-};// end get search users
+  // if nothing is entered into search input, print error msg
+  if (!body.search) {
+    responseJSON.id = 'missingParams';
+    return respondJSON(request, response, 400, responseJSON);
+  }
+
+  // if the player searched for isnt found, error messsage
+  if (!players[body.search]) {
+    // not found error returned if the search is not in the player obj
+    responseJSON.id = 'playerNotFound';
+    return respondJSON(request, response, 404, responseJSON);
+  }
+
+  // return the data of the player JSON
+  searchPlayer[body.search] = {
+    name: players[body.search].name,
+    pos: players[body.search].pos,
+    team: players[body.search].team,
+  };
+
+  return respondJSON(request, response, 200, responseJSON);
+}; // end searchUsers
 
 const searchUsers = (request, response, search) => {
   // default json message
@@ -58,8 +79,6 @@ const searchUsers = (request, response, search) => {
   searchPlayer.name = players[search].name;
   searchPlayer.pos = players[search].pos;
   searchPlayer.team = players[search].team;
-
-  getSearchUsers(request, response);
 
   return respondJSONMeta(request, response, responseCode);
 };

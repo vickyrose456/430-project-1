@@ -34,12 +34,18 @@ import "./client-header.js";
             content.appendChild(fieldImg);
 
 
+
+
+
             if (pResponse) {
                 // parse the JSON
                 const obj = await response.json();
 
                 console.log(obj.players);
                 console.log(obj);
+
+
+                console.log(obj.searchPlayer);
 
                 //const jsonString = JSON.stringify(obj.playerPos);
 
@@ -75,7 +81,7 @@ import "./client-header.js";
                 //content.innerHTML += `<p>${jsonString}</p>`;
 
             } else {
-
+                
             }
         };
 
@@ -123,25 +129,25 @@ import "./client-header.js";
         };
 
         const requestSearchUpdate = async (searchForm) => {
-            //The Url will automatically be getting the users 
-            const url = '/searchUsers';
+            //The Url will automatically be getting the searched userx
+            const url = '/getUsers';
 
             const searchField = searchForm.querySelector('#searchNameField');
 
-            const search = `search=${searchField.value}`;
+            const search = searchField.value;//`search=${searchField.value}`;
             
-            // Await our fetch response.
-            const response = await fetch(url, {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    Accept: 'application/json',
-                },
-                search: search,
-            });
+            //fetch response to dind data
+            fetch(url)
+                .then(res => res.json())
+                .then(json => {
+                console.log("Searched position:");
+                console.log(json.players[search]);
+                });//end fetch's and .then
 
-            console.log("To response");
-            handleResponse(response, true);
+            
+
+            //console.log("To response");
+            //handleResponse(response, true);
         };
 
         const init = () => {
