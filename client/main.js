@@ -131,6 +131,7 @@ import "./client-header.js";
         const requestSearchUpdate = async (searchForm) => {
             //The Url will automatically be getting the searched userx
             const url = '/getUsers';
+            let searchedPlayer ={};
 
             const searchField = searchForm.querySelector('#searchNameField');
 
@@ -140,14 +141,63 @@ import "./client-header.js";
             fetch(url)
                 .then(res => res.json())
                 .then(json => {
-                console.log("Searched position:");
-                console.log(json.players[search]);
-                });//end fetch's and .then
+                    searchedPlayer = json.players[search];
+                    console.log(searchedPlayer);//json.players[search]);
 
+                if(searchedPlayer)
+                {
+                    content.innerHTML = '<p id = "status"><b>Success!</b></p>';
+                    //draw field 
+                    const fieldImg = document.createElement("img");
+                    fieldImg.src = `/baseballField`;
+                    fieldImg.alt = `Baseball field`;
+                    content.appendChild(fieldImg);
+
+
+                    //show name for searched position player
+                    for (let i = 1; i <= 9; i++) {
+
+                        const section = document.createElement("section");
+                        section.id = `pos${i}`;
+                    
+                        if(searchedPlayer.pos == i)
+                        {
+                            section.innerText = `Name: ${searchedPlayer.name}\n Position: ${i}\n
+                                    Team:${searchedPlayer.team}`;
+                            section.style = `width: 100px;
+                            height: 150px;
+                            border: 2px solid red`;
+
+                        }else{
+                            section.innerText = `${i}`;
+
+                            }    
+
+                            content.appendChild(section);
+
+                        }//end for loop
+                    }
+                else{
+                    //player wasnt found. Send error message
+                    content.innerHTML = '<p id = "status"><b>Player Not Found</b></p>';
+                            
+                    }
+                
+                    
+                });//end fetch's and .then
             
 
-            //console.log("To response");
-            //handleResponse(response, true);
+            /**
+             * const response = await fetch(url, {
+                method: 'get',
+                headers: {
+                    Content-Type
+                    Accept: 'application/json',
+                },
+            });
+
+            handleResponse(response, true);
+             */
         };
 
         const init = () => {
